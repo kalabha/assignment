@@ -1,11 +1,98 @@
-<form method="post" action="{{ form_url}}">
-            {% csrf_token %}
+{% extends "assignment/base.html" %} {% load static %} {% block content %}
+  <link href="{% static 'css/daterangepicker.css' %}" rel="stylesheet">
 
-{{ candidate_form.as_p }}
-{{ user_form.as_p }}
-{{ address_form.as_p }}
-{{ contact_form.as_p }}
-<input type="submit" name="submit">
-</form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>
+        Create Offer Letter
+      </h3>
+      <hr>
+      <form action="{{form_url}}" method="post" class="form-horizontal">
+        {% csrf_token %}
+        
+        <fieldset>
+        {% for field in candidate_form %}
+        <div class="form-group">
+            {{ field.errors }}
+          <div class="col-sm-2">
+            {{ field.label_tag }}
+          </div>
+          <div class="col-sm-8">
+            {{ field }}
+          </div>
+        </div>
+        {% endfor %}
+        </fieldset>
+        <fieldset>
+        {% for field in address_form %}
+        <div class="form-group">
+            {{ field.errors }}
+          <div class="col-sm-2">
+            {{ field.label_tag }}
+          </div>
+          <div class="col-sm-8">
+            {{ field }}
+          </div>
+        </div>
+        {% endfor %}
+        </fieldset>
+        <fieldset>
+        {% for field in contact_form %}
+        <div class="form-group">
+            {{ field.errors }}
+          <div class="col-sm-2">
+            {{ field.label_tag }}
+          </div>
+          <div class="col-sm-8">
+            {{ field }}
+          </div>
+        </div>
+        {% endfor %}
+        </fieldset>
+        
+      
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block footer.scripts %}
+<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="{% static 'js/daterangepicker.js' %}"></script>
 
+<script>
+$(document).ready(function() {
+    var $date_inputs = $('#id_dob, #id_issued_date, #id_joining_date')
+    var date_format = 'YYYY-MM-DD';
+    $date_inputs.daterangepicker({
+        singleDatePicker: true,
+        autoUpdateInput: false,
+        // timePicker: true,
+        // timePicker24Hour: false,
+        autoApply: true,
+        showDropdowns: true,
+        locale: {
+            format: date_format,
+        },
+        // calender_style: "picker_4",
+    }, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+    });
 
+    $date_inputs.on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+    });
+
+    $date_inputs.on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
+   
+    });
+   
+
+</script>
+
+{% endblock footer.scripts %}

@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include, url
+from offer_letter import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^login/$', views.userlogin, name="login"),
+    url(r'^logout/$', views.userlogout, name="logout"),
     url(r'^offer_letter/', include('offer_letter.urls', namespace="offer_letter")),
     
 

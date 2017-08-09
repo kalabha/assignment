@@ -1,20 +1,7 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import Candidate, ContactForCandidate, AddressForCandidate
-# from django.core.exceptions import NON_FIELD_ERRORS
 
-
-class UserForm(UserCreationForm):
-  class Meta:
-    model = User
-    widgets = {
-               "email": forms.TextInput(attrs={'class': "form-control", 'type': "email"}),
-               "first_name": forms.TextInput(attrs={'class': "form-control", 'required': "required"}),
-               "last_name": forms.TextInput(attrs={'class': "form-control", 'required': "required"}),
-               }
-    fields = ['last_name', 'email', 'first_name',]
 
 
 class CandidateForm(ModelForm):
@@ -24,16 +11,20 @@ class CandidateForm(ModelForm):
   class Meta:
     model = Candidate
     widgets = {
-                "dob": forms.DateInput(attrs={'class': "form-control",}),
+
+                "first_name": forms.TextInput(attrs={'class': "form-control", 'required': "required"}),
+                "last_name": forms.TextInput(attrs={'class': "form-control", 'required': "required"}),
+                "email": forms.TextInput(attrs={'class': "form-control", 'type': "email"}),
+                "dob": forms.TextInput(attrs={'class': "form-control",}),
                 "gender": forms.Select(attrs={'class': "form-control", "data-toggle": "select"}),
                 "designation": forms.TextInput(attrs={'class': "form-control", 'required': "required",}),
                 "reporting_officer": forms.TextInput(attrs={'class': "form-control", 'required': "required",}),
                 "annual_salary": forms.NumberInput(attrs={'class': "form-control", 'required': "required",}),
-                "issued_date": forms.DateInput(attrs={'class': "form-control",}),
-                "joining_date": forms.DateInput(attrs={'class': "form-control",}),
+                "issued_date": forms.TextInput(attrs={'class': "form-control",}),
+                "joining_date": forms.TextInput(attrs={'class': "form-control",}),
 
                }
-    exclude = ('user',)
+    fields = '__all__'
 
  
 

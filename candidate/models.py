@@ -22,8 +22,10 @@ class Candidate(models.Model):
         ('Female', 'Female'),
         ('Male', 'Male'),
     )
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    email = models.EmailField()
     dob = models.DateField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     gender = models.CharField(max_length=6, choices=SEX)
     annual_salary = models.PositiveIntegerField()
     issued_date = models.DateField()
@@ -32,4 +34,4 @@ class Candidate(models.Model):
     reporting_officer = models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.user.first_name) + " " + str(self.user.last_name)
+        return str(self.first_name) + " " + str(self.last_name)
