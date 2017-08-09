@@ -21,6 +21,7 @@ from offer_letter import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', views.userlogin, name="login"),
     url(r'^login/$', views.userlogin, name="login"),
     url(r'^logout/$', views.userlogout, name="logout"),
     url(r'^offer_letter/', include('offer_letter.urls', namespace="offer_letter")),
