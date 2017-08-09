@@ -41,6 +41,7 @@ def create(request):
             contact = contact_form.save(commit=False)
             contact.candidate= candidate
             contact.save()
+            messages.add_message(request, messages.SUCCESS, 'Offer letter Created!')
 
           
             return HttpResponseRedirect(reverse('offer_letter:detail',args=[candidate.pk]))
@@ -82,6 +83,7 @@ class OfferLetterPDFView(PDFTemplateView):
 
 def userlogin(request):
     if request.method == 'GET':
+        messages.add_message(request, messages.SUCCESS, 'You need to login to create an offer letter!')
         return render(request, 'assignment/login.html')
     else:
         username = request.POST['login-name']
