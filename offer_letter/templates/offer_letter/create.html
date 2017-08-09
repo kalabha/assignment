@@ -1,0 +1,11 @@
+<form method="post" action="{{ form_url}}">
+            {% csrf_token %}
+
+{{ candidate_form.as_p }}
+{{ user_form.as_p }}
+{{ address_form.as_p }}
+{{ contact_form.as_p }}
+<input type="submit" name="submit">
+</form>
+
+

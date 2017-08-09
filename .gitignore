@@ -1,0 +1,28 @@
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
+migrations/
+env/
+*.json
+staticfiles/
+node_modules/
+startup.bat
+### Linux ###
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+db.sqlite3-journal
+*.orig
+
+.idea/
