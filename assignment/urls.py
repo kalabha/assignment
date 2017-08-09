@@ -21,5 +21,6 @@ from django.conf.urls import include, url
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^offer_letter/', include('offer_letter.urls', namespace="offer_letter")),
+    
 
 ]

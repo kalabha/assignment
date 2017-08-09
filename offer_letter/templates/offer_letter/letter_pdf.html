@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <style type="text/css">
+        .p_style{
+        line-height: 1px!important;
+        }
+
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 style="font-size:40px;" align="center">Nescode</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>{{ candidate.issued_date }}</p>
+                        <p><b>To</b></p>
+                        <p>{{ candidate }}</br>{{ candidate.candidate_address.addressline1}}
+                        </br>{{ candidate.candidate_address.addressline2}}</br>{{ candidate.candidate_address.area}},{{ candidate.candidate_address.city}}</br>{{ candidate.candidate_address.state}},{{ candidate.candidate_address.country}}</br>{{ candidate.candidate_address.zipcode}}</br>{{ candidate.candidate_contact.phone }}</p>
+                        
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><b>sub: Offer Letter</b></p>
+                        <p>Dear {{candidate}},</p>
+                        <p>One the behalf of Nescode Technologies Private Limited, I am pleased to offer you the position of {{ candidate.designation }}, in this important position you will report to {{ candidate.reporting_officer }}. Your joining date will be {{ candidate.joining_date }}.</p>
+                        <p>Annual Salary:{{ candidate.annual_salary }}</p>
+                        <p>Sincerely,</p>
+                        <p>HR</p>
+                        <p>Nescode Technologies Private Limited</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </body>
+</html>

@@ -26,7 +26,7 @@ class Candidate(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     gender = models.CharField(max_length=6, choices=SEX)
     annual_salary = models.PositiveIntegerField()
-    issue_date = models.DateField()
+    issued_date = models.DateField()
     joining_date = models.DateField()
     designation = models.CharField(max_length=255)
     reporting_officer = models.CharField(max_length=255)

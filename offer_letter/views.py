@@ -5,7 +5,8 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from candidate.forms import *
 from django.shortcuts import get_object_or_404, render
-
+from easy_pdf.views import PDFTemplateView
+from easy_pdf.rendering import render_to_pdf
 # # from invoice.models import Invoice, Achievements
 # from django.db.models import Sum
 # from django.contrib import messages
@@ -86,3 +87,16 @@ def detail(request,pk):
         'candidate': candidate,
     }
     return render(request, 'offer_letter/single.html', context)
+
+
+
+class OfferLetterPDFView(PDFTemplateView):
+    template_name = 'offer_letter/letter_pdf.html'
+
+    def get_context_data(self, **kwargs):
+        pk = kwargs.get('pk', False)
+        return super(OfferLetterPDFView, self).get_context_data(
+            pagesize='A4',
+            title='Hi there!',
+            candidate= Candidate.objects.get(pk=pk),
+        )

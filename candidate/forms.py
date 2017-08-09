@@ -27,9 +27,9 @@ class CandidateForm(ModelForm):
                 "dob": forms.DateInput(attrs={'class': "form-control",}),
                 "gender": forms.Select(attrs={'class': "form-control", "data-toggle": "select"}),
                 "designation": forms.TextInput(attrs={'class': "form-control", 'required': "required",}),
-                "reports_to": forms.TextInput(attrs={'class': "form-control", 'required': "required",}),
+                "reporting_officer": forms.TextInput(attrs={'class': "form-control", 'required': "required",}),
                 "annual_salary": forms.NumberInput(attrs={'class': "form-control", 'required': "required",}),
-                "issue_date": forms.DateInput(attrs={'class': "form-control",}),
+                "issued_date": forms.DateInput(attrs={'class': "form-control",}),
                 "joining_date": forms.DateInput(attrs={'class': "form-control",}),
 
                }
