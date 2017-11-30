@@ -24,3 +24,5 @@ admin.site.register(Country, CountryAdmin)
 admin.site.register(State, StateAdmin)
 admin.site.register(Address)
 admin.site.register(Contact)
+admin.site.register(Coordinate)
+

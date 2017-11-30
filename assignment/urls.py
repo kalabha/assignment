@@ -16,15 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include, url
-from offer_letter import views
+from address import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.userlogin, name="signin"),
-    url(r'^login/$', views.userlogin, name="login"),
-    url(r'^logout/$', views.userlogout, name="logout"),
-    url(r'^offer_letter/', include('offer_letter.urls', namespace="offer_letter")),
-    
+    # url(r'^$', views.userlogin, name="signin"),
+    # url(r'^login/$', views.userlogin, name="login"),
+    # url(r'^logout/$', views.userlogout, name="logout"),
+    # url(r'^offer_letter/', include('offer_letter.urls', namespace="offer_letter")),
+    url(r'^get_address/(?P<get_latitude>[^/]+)/(?P<get_longitude>[^/]+)/$', views.get_address, name="get_address"),
 
 ]

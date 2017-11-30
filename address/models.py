@@ -1,4 +1,5 @@
 from django.db import models
+from geoposition.fields import GeopositionField
 
 
 class Country(models.Model):
@@ -27,7 +28,6 @@ class City(models.Model):
 
 
 class Address(models.Model):
-
     addressline1 = models.CharField("Addressline 1", max_length=200)
     addressline2 = models.CharField("Addressline 2", max_length=200)
     area = models.CharField(max_length=100)
@@ -43,3 +43,11 @@ class Address(models.Model):
 class Contact(models.Model):
     phone = models.CharField("Phone Number", max_length=20)
     alternate_phone = models.CharField("Alternate Phone Number", max_length=20, null=True, blank=True)
+
+
+class Coordinate(models.Model):
+    values = GeopositionField()
+    address = models.TextField()
+
+    def __str__(self):
+        return str(self.values)

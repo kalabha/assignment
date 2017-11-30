@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')6z(hc@&4b0-4hmg!v&!46tkl&%rm0^c5^c55bis1(jdwkc)$q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'address',
     'candidate',
-    'offer_letter'
+    'geoposition',
+    # 'offer_letter'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,6 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
 LOGIN_URL = '/login/'
+
+
+GEOPOSITION_GOOGLE_MAPS_API_KEY = "AIzaSyBlxviPTDM2rITkEHFzE4hJ3wVKfoErAZk"
