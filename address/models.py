@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from geoposition.fields import GeopositionField
 
@@ -48,6 +50,7 @@ class Contact(models.Model):
 class Coordinate(models.Model):
     values = GeopositionField()
     address = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.values)
